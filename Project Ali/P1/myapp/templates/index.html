@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero container">
+    <div class="hero-text">
+        <h1>THINKING OF <span class="green-text">STUDY ABROAD?</span></h1>
+        <p>Take the first step towards an exciting academic journey! Discover world-class universities, experience
+            diverse cultures, and build a successful future with global opportunities.</p>
+    </div>
+    <div class="hero-image">
+        <img src="{% static 'img/graduate.png' %}" alt="Graduate" />
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about container">
+    <div class="experience">
+        <h2>6</h2>
+        <p>YEAR OF EXPERIENCE</p>
+    </div>
+    <div class="about-content">
+        <h4>ABOUT OUR COMPANY</h4>
+        <h2>Your Partner In International Education</h2>
+        <p>H&H Consultancy for Education. As Pakistan's largest overseas education network and top study abroad advisor,
+            H&H Educational Consultancy is the ideal place to begin your international education journey. We help you
+            realize your ambition of studying overseas at every turn.</p>
+        <a href="#" class="btn-readmore" target="_blank" rel="noopener">READ MORE &rarr;</a>
+    </div>
+</section>
+
+<!-- Advice Form Section -->
+<section class="advice container">
+    <h3>Do You Need Advice? <br /><strong>APPLY NOW</strong></h3>
+
+    {% if messages %}
+    {% for message in messages %}
+    <p class="success-message">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+
+    <form id="adviceForm" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Name" name="name" required />
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="tel" placeholder="Phone Number" name="phone" required />
+        <input type="text" placeholder="City" name="city" required />
+        <select name="country" required>
+            <option value="" disabled selected>Select Country</option>
+            <option value="UK">UK</option>
+            <option value="USA">USA</option>
+            <option value="Australia">Australia</option>
+            <option value="Italy">Italy</option>
+        </select>
+        <button type="submit">Apply Now</button>
+    </form>
+</section>
+
+<!-- Reasons Section -->
+<section class="reasons container">
+    <div class="reason-text">
+        <h2>The Reasons H&H Educational Consultancy Is Pakistan's Top Study Abroad Advisor</h2>
+        <p>H&H Educational Consultancy is the top study abroad advisor in Pakistan because we put a lot of effort into
+            assisting students in succeeding. We can offer individualized advice and help from beginning to end thanks
+            to our larger networks and expertise. Our full, transparent, and reliable services set us apart from other
+            consultants in this industry.</p>
+    </div>
+    <div class="reason-icons">
+        <img src="{% static 'img/Picture.png' %}" alt="Study Abroad with H&H" />
+    </div>
+</section>
+
+<!-- Study Abroad Section -->
+<section class="study-abroad container">
+    <div>
+        <h3>Selecting the Best Study Abroad Course</h3>
+        <h4>Provide for Students?</h4>
+        <p>In order to help our students, Pakistani study abroad advisors go above and beyond. The organization assists
+            people at every stage, from locating housing to landing a job. Our students are our priority.</p>
+    </div>
+    <div class="cards">
+        <div class="card green">
+            <h3>Obtain the Best Study Abroad Advisor</h3>
+            <p>Locate the most respected educational consultation and the greatest international studies consultant in
+                Pakistan. Expert
+                advisors provide assistance with top universities, overseas requirements, and visa application process.
+            </p>
+        </div>
+        <div class="card green">
+            <h3>Why is H&H Educational Consultancy one of the best consultants?</h3>
+            <p>H&H Educal Consultancy is considered one of the best study abroad consultants because we know what we’re
+                doing
+                and don’t take shortcuts. Our commitment to students is demonstrated by being recognized as top study
+                abroad advisors.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Procedure Section -->
+<section class="procedure container">
+    <h2>Our Procedure</h2>
+    <div class="procedure-slider">
+        <div class="step-box active">
+            <h5>Step 01</h5>
+            <h3>Initial Consultation</h3>
+            <p>During the initial consultation, we discuss your academic goals, preferences, and future plans. Our
+                experts assess your profile and provide tailored guidance. This helps create a clear roadmap for your
+                study abroad journey.</p>
+        </div>
+        <div class="step-box">
+            <h5>Step 02</h5>
+            <h3>University Selection</h3>
+            <p>We provide personalized guidance to help you choose the best universities that match your academic goals
+                and interests. Our experts consider your profile, budget, and career aspirations. This ensures you
+                select institutions where you can thrive and succeed internationally.</p>
+        </div>
+        <div class="step-box">
+            <h5>Step 03</h5>
+            <h3>Application Preparation</h3>
+            <p>We help you gather all required documents and write your statements of purpose. Each application is
+                carefully reviewed to meet university standards. Our guidance ensures your materials are complete and
+                stand out to admissions committees.</p>
+        </div>
+        <div class="step-box">
+            <h5>Step 04</h5>
+            <h3>Submit Applications</h3>
+            <p>After preparing all necessary documents, we submit your applications to the selected universities. We
+                track the progress of each submission to ensure everything is on schedule. This helps you stay informed
+                and increases the chances of a smooth admission process.</p>
+        </div>
+        <div class="step-box">
+            <h5>Step 05</h5>
+            <h3>Receive Offer Letter</h3>
+            <p>Once your application is processed, you will receive an official offer letter from the university. Review
+                the letter carefully for details about your admission and program. Confirm your acceptance to secure
+                your place and move forward with enrollment.</p>
+        </div>
+        <div class="step-box">
+            <h5>Step 06</h5>
+            <h3>Visa Application Process</h3>
+            <p>Submit your visa application along with all required documents and fees. Complete any necessary
+                biometrics and attend interviews if required. Stay informed on your application status to ensure a
+                smooth and timely visa approval.</p>
+        </div>
+        <div class="step-box">
+            <h5>Step 07</h5>
+            <h3>Visa Granted & Pre-Departure</h3>
+            <p>Congratulations on receiving your student visa! Attend a pre-departure briefing to learn travel
+                guidelines, cultural insights, and academic expectations. Ensure all documents and arrangements are
+                ready for a smooth start to your international education journey.</p>
+        </div>
+    </div>
+    <div class="procedure-nav">
+        <button id="prev-procedure">&#8592;</button>
+        <button id="next-procedure">&#8594;</button>
+    </div>
+</section>
+
+
+
+<!-- Testimonials Section -->
+<section class="testimonials container">
+    <h4>Testimonials</h4>
+    <h2>Our Satisfied Clients</h2>
+    <div class="testimonial-slider">
+        <button id="prev">&#8592;</button>
+        
+        <div class="testimonial active" data-index="0">
+            <p>H&H Educational Consultancy exceeded my expectations in facilitating my admission process for studying abroad.</p>
+            <h5>Ali Nadeem</h5>
+        </div>
+        
+        <div class="testimonial" data-index="1">
+            <p>If I could give 10 stars, I would...it was a wonderful experience with them...very professional, committed and ever helping team.</p>
+            <h5>Shiza Rafiq</h5>
+        </div>
+        
+        <div class="testimonial" data-index="2">
+            <p>The counsellors at H&H Educational Consultancy respond promptly and are well equipped with the knowledge of various foreign universities.</p>
+            <h5>Usama Naeem</h5>
+        </div>
+
+        <button id="next">&#8594;</button>
+    </div>
+</section>
+
+
+{% endblock %}

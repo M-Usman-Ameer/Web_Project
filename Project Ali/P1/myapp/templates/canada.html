@@ -1,0 +1,357 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<header class="page-header_uni" role="banner" aria-label="Page header with image and title" style="
+    background: linear-gradient(135deg, rgba(11,61,46,0.9), rgba(15,168,87,0.9)), 
+                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 80px 20px; /* 👈 Height reduced from 120px */
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+">
+    <h1 style="
+        font-size: 2.5rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 700;
+        background: linear-gradient(to right, #b3ffcf, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        margin-bottom: 10px;
+    ">
+        Study In Canada
+    </h1>
+
+    <!-- Breadcrumb -->
+    <div style="
+        font-size: 1rem;
+        color: #d4f9e2;
+        margin-bottom: 10px;
+    ">
+        <a href='{% url "home" %}' style="
+            color: #b3ffcf;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        " onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#b3ffcf'">
+            Home
+        </a>
+        &nbsp;>&nbsp;
+        <span style="color: #ffffff; font-weight: 600;">Study in Canada</span>
+    </div>
+
+    <div style="
+        width: 100px;
+        height: 3px;
+        background-color: #00ff9d;
+        margin: 10px auto 0;
+        border-radius: 2px;
+    "></div>
+</header>
+
+
+<section style="
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      padding: 80px 8%;
+      font-family: 'Poppins', sans-serif;
+      flex-wrap: wrap;
+      background: #f6fff9;
+    ">
+
+    <!-- Left Side Image -->
+    <div class="image-wrapper" style="
+        flex: 1 1 45%;
+        text-align: center;
+      ">
+        <img src="{% static 'img/c1.png' %}" alt="Man holding UK flag with Big Ben background"
+            style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); transition: transform 0.4s ease;"
+            onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+
+    <!-- Right Side Content -->
+    <div class="content" style="
+        flex: 1 1 50%;
+        color: #093a29;
+      ">
+        <h1 style="
+          font-size: 2rem;
+          color: #0fa857;
+          margin-bottom: 15px;
+          font-weight: 700;
+        ">
+            How much does it cost to study in Canada from Pakistan?
+        </h1>
+
+        <p style="
+          line-height: 1.8;
+          font-size: 1.05rem;
+          color: #333;
+          text-align: justify;
+        ">
+        The Canadian embassy in Islamabad has announced that the updated student visa fee for 2023 is 150 CAD. There is a
+        biometric charge of 85 CAD per person, which is equal to 33000 to 35000 PKR.
+        Additionally, here is a brief summary of the various schools’ <br>
+       <h3>PG (Post Graduate) price structures!</h3>
+        . PG level engineering: $17895.06 <br>
+        . PG level in medicine: $17172–25758.26 <br>
+        . PG level in nursing: $14956.96 <br>
+        . PG level of law: $15970.12 <br>
+        . PG level in dentistry: $20795.50 <br>
+        . PG level in arts: $13651.88br
+
+        </p>
+    </div>
+
+</section>
+
+<!-- Apply Now Form -->
+<section class="advice container">
+    <h3>Do You Need Advice? <br /><strong>APPLY NOW</strong></h3>
+
+    {% if messages %}
+    {% for message in messages %}
+    <p style="color: green;">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+
+    <form id="adviceForm" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Name" name="name" required />
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="tel" placeholder="Phone Number" name="phone" required />
+        <button type="submit">Apply Now</button>
+    </form>
+</section>
+<!-- Services Section -->
+<section class="services-section-uni section" aria-label="Services we provide" style="
+    padding: 80px 8%;
+    background: linear-gradient(135deg, #f4fff9, #e6fff3);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+">
+    <h2 style="
+        color: #0b3d2e;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 60px;
+        letter-spacing: 1px;
+    ">
+        SERVICES WE PROVIDE
+    </h2>
+
+    <div class="services-cards-uni" style="
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 30px;
+        flex-wrap: wrap;
+    ">
+
+        <!-- Student Counselling -->
+        <article class="service-card-uni" style="
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 40px 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            flex: 1 1 300px;
+            max-width: 360px;
+            transition: all 0.4s ease;
+            position: relative;
+        " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'">
+
+            <img src="https://img.icons8.com/fluency/96/brainstorm-skill.png" alt="Student Counselling Icon"
+                style="width: 80px; height: 80px; margin-bottom: 20px;" aria-hidden="true" />
+            <div class="number" style="
+                position: absolute;
+                top: 20px;
+                right: 25px;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #0fa857;
+                opacity: 0.7;
+            ">01</div>
+            <h3 style="color: #0fa857; font-size: 1.4rem; margin-bottom: 15px;">Student Counselling</h3>
+            <p style="color: #333; line-height: 1.7;">We provide student-focused advisory services centered on the
+                admissions process at top universities worldwide.</p>
+            <a href="#"
+                style="display: inline-block; margin-top: 15px; color: #eef4f1; text-decoration: none; font-weight: 600;">READ
+                MORE →</a>
+        </article>
+
+        <!-- Visa Application -->
+        <article class="service-card-uni" style="
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 40px 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            flex: 1 1 300px;
+            max-width: 360px;
+            transition: all 0.4s ease;
+            position: relative;
+        " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'">
+
+            <img src="https://img.icons8.com/color/96/passport.png" alt="Visa Application Icon"
+                style="width: 80px; height: 80px; margin-bottom: 20px;" aria-hidden="true" />
+            <div class="number" style="
+                position: absolute;
+                top: 20px;
+                right: 25px;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #0fa857;
+                opacity: 0.7;
+            ">02</div>
+            <h3 style="color: #0fa857; font-size: 1.4rem; margin-bottom: 15px;">Visa Application</h3>
+            <p style="color: #333; line-height: 1.7;">We help you prepare for the VISA application process and guide you
+                through university interviews efficiently.</p>
+            <a href="#"
+                style="display: inline-block; margin-top: 15px; color: #f6f9f7; text-decoration: none; font-weight: 600;">READ
+                MORE →</a>
+        </article>
+
+        <!-- Career Advice -->
+        <article class="service-card-uni" style="
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 40px 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            flex: 1 1 300px;
+            max-width: 360px;
+            transition: all 0.4s ease;
+            position: relative;
+        " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'">
+
+            <img src="https://img.icons8.com/fluency/96/leader.png" alt="Career Advice Icon"
+                style="width: 80px; height: 80px; margin-bottom: 20px;" aria-hidden="true" />
+            <div class="number" style="
+                position: absolute;
+                top: 20px;
+                right: 25px;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #0fa857;
+                opacity: 0.7;
+            ">03</div>
+            <h3 style="color: #89fbaf; font-size: 1.4rem; margin-bottom: 15px;">Career Advice</h3>
+            <p style="color: #333; line-height: 1.7;">Our experienced consultants offer young candidates practical and
+                tailored career guidance for their future success.</p>
+            <a href="#"
+                style="display: inline-block; margin-top: 15px; color: #f2f7f5; text-decoration: none; font-weight: 600;">READ
+                MORE →</a>
+        </article>
+    </div>
+</section>
+
+
+<!-- Final Study In UK Section -->
+<section class="study-uk-section" style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        padding: 80px 8%;
+        background: #f6fff9;
+        font-family: 'Poppins', sans-serif;
+        flex-wrap: wrap;
+    ">
+    <!-- Left Side Text -->
+    <div class="study-uk-text" style="
+            flex: 1 1 50%;
+            color: #093a29;
+        ">
+        <h2 style="
+                font-size: 2.2rem;
+                color: #0fa857;
+                margin-bottom: 20px;
+                font-weight: 700;
+            ">
+            Pakistani students studying in Canada
+        </h2>
+
+        <p style="
+                font-size: 1.05rem;
+                line-height: 1.8;
+                color: #333;
+                text-align: justify;
+            ">
+        It is no longer just a dream for Pakistani students to study in Canada. With H&H Educational Consultancy, your journey
+        towards world-class education, a diverse culture, and countless career opportunities in Canada becomes smooth and
+        achievable. From university admissions to visa guidance, we’ve got you covered every step of the way.
+        </p>
+    </div>
+
+    <!-- Right Side Image -->
+    <div class="study-uk-images" style="
+            flex: 1 1 45%;
+            text-align: center;
+        ">
+        <img src="{% static 'img/c2.png' %}" alt="Big Ben" style="
+                width: 100%;
+                max-width: 500px;
+                border-radius: 20px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+                transition: transform 0.4s ease;
+            " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+</section>
+
+<!-- Counter Section -->
+<!-- Counter Section -->
+<section
+    style="background: linear-gradient(135deg, #0b3d2e, #0fa857); color: white; padding: 80px 0; font-family: 'Poppins', sans-serif;">
+    <div
+        style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: auto;">
+
+        <div
+            style="flex: 1 1 230px; min-width: 230px; display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.06); padding: 25px 30px; border-radius: 15px; box-shadow: 0 5px 18px rgba(0,0,0,0.15); transition: all 0.3s ease;">
+            <div style="font-size: 2.6rem; color: #b3ffcf;"><i class="fa-solid fa-globe"></i></div>
+            <div>
+                <div style="font-size: 1.8rem; font-weight: 700;">06 +</div>
+                <div style="font-size: 1rem; opacity: 0.9;">Number of Countries</div>
+            </div>
+        </div>
+
+        <div
+            style="flex: 1 1 230px; min-width: 230px; display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.06); padding: 25px 30px; border-radius: 15px; box-shadow: 0 5px 18px rgba(0,0,0,0.15); transition: all 0.3s ease;">
+            <div style="font-size: 2.6rem; color: #b3ffcf;"><i class="fa-solid fa-building-columns"></i></div>
+            <div>
+                <div style="font-size: 1.8rem; font-weight: 700;">02 +</div>
+                <div style="font-size: 1rem; opacity: 0.9;">Our Branches</div>
+            </div>
+        </div>
+
+        <div
+            style="flex: 1 1 230px; min-width: 230px; display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.06); padding: 25px 30px; border-radius: 15px; box-shadow: 0 5px 18px rgba(0,0,0,0.15); transition: all 0.3s ease;">
+            <div style="font-size: 2.6rem; color: #b3ffcf;"><i class="fa-solid fa-passport"></i></div>
+            <div>
+                <div style="font-size: 1.8rem; font-weight: 700;">100 +</div>
+                <div style="font-size: 1rem; opacity: 0.9;">Visa Process</div>
+            </div>
+        </div>
+
+        <div
+            style="flex: 1 1 230px; min-width: 230px; display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.06); padding: 25px 30px; border-radius: 15px; box-shadow: 0 5px 18px rgba(0,0,0,0.15); transition: all 0.3s ease;">
+            <div style="font-size: 2.6rem; color: #b3ffcf;"><i class="fa-solid fa-circle-check"></i></div>
+            <div>
+                <div style="font-size: 1.8rem; font-weight: 700;">92%</div>
+                <div style="font-size: 1rem; opacity: 0.9;">Success Rate</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}

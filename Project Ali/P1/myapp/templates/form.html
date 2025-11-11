@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admission Form</title>
+    <style>
+        :root {
+            --accent: #0b74de;
+            --muted: #6b7280;
+            --bg: #f7fafc
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            line-height: 1.4;
+            margin: 0;
+            background: var(--bg);
+            color: #111
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 28px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(12, 14, 20, 0.06)
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 20px
+        }
+
+        p.lead {
+            margin: 0 0 20px;
+            color: var(--muted)
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 6px
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=tel],
+        select,
+        textarea,
+        input[type=date] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e6e9ee;
+            border-radius: 8px
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical
+        }
+
+        .full {
+            grid-column: 1/-1
+        }
+
+        .section {
+            grid-column: 1/-1;
+            padding: 12px 0;
+            border-top: 1px dashed #f0f2f4;
+            margin-top: 8px
+        }
+
+        .row {
+            display: flex;
+            gap: 10px
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 12px
+        }
+
+        button {
+            background: var(--accent);
+            color: #fff;
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer
+        }
+
+        button.secondary {
+            background: #fff;
+            color: var(--accent);
+            border: 1px solid #d7e6fb
+        }
+
+        .note {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .error {
+            color: #b91c1c;
+            font-size: 13px
+        }
+
+        @media (max-width:720px) {
+            form {
+                grid-template-columns: 1fr
+            }
+
+            .row {
+                flex-direction: column
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h1>Admission Form</h1>
+        <p class="lead">Please fill the form carefully. Fields marked with * are required.</p>
+
+        <form id="admissionForm" novalidate method="POST">
+            {% csrf_token %}
+            <!-- Personal information -->
+            <div class="full">
+                <label for="program">Program / Course applying for *</label>
+                <select id="program" name="program" required>
+                    <option value="">-- Select program --</option>
+                    <option>Bachelor of Science (Computer Science)</option>
+                    <option>Bachelor of Business Administration</option>
+                    <option>Master of Science (AI)</option>
+                    <option>Diploma in Web Development</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="firstName">First name *</label>
+                <input id="firstName" name="firstName" type="text" required minlength="2" placeholder="Ahmed">
+            </div>
+
+            <div>
+                <label for="lastName">Last name *</label>
+                <input id="lastName" name="lastName" type="text" required minlength="2" placeholder="Khan">
+            </div>
+
+            <div>
+                <label for="dob">Date of birth *</label>
+                <input id="dob" name="dob" type="date" required>
+            </div>
+
+            <div>
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="">Prefer not to say</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="phone">Phone *</label>
+                <input id="phone" name="phone" type="tel" required pattern="^[0-9+\-()\s]{7,20}$"
+                    placeholder="+92 300 0000000">
+            </div>
+
+            <div>
+                <label for="email">Email *</label>
+                <input id="email" name="email" type="email" required placeholder="name@example.com">
+            </div>
+
+            <!-- Address -->
+            <div class="full">
+                <label for="address">Permanent address *</label>
+                <textarea id="address" name="address" required placeholder="Street, City, Province"></textarea>
+            </div>
+
+            <div>
+                <label for="country">Country *</label>
+                <input id="country" name="country" type="text" required placeholder="Pakistan">
+            </div>
+
+            <div>
+                <label for="city">City *</label>
+                <input id="city" name="city" type="text" required placeholder="Lahore">
+            </div>
+
+            <!-- Academic details -->
+            <div class="section">
+                <strong>Academic / Qualification</strong>
+            </div>
+
+            <div>
+                <label for="highestQualification">Highest qualification *</label>
+                <select id="highestQualification" name="highestQualification" required>
+                    <option value="">-- Select --</option>
+                    <option>Matric/O-Levels</option>
+                    <option>Intermediate/A-Levels</option>
+                    <option>Bachelor</option>
+                    <option>Master</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="institution">Institution / Board *</label>
+                <input id="institution" name="institution" type="text" required placeholder="Islamia University">
+            </div>
+
+            <div>
+                <label for="year">Year of completion *</label>
+                <input id="year" name="year" type="text" pattern="^\d{4}$" placeholder="2024">
+            </div>
+
+            <div>
+                <label for="grade">Grade / Percentage</label>
+                <input id="grade" name="grade" type="text" placeholder="3.4 CGPA or 78%">
+            </div>
+
+            <!-- Documents -->
+            <div class="full">
+                <label for="documents">Upload documents (CV / Degree / CNIC) — PDF or image</label>
+                <input id="documents" name="documents" type="file" accept=".pdf,image/*" multiple>
+                <div class="note">Allowed: PDF, JPG, PNG. Max 5 files. Max size per file: 5MB (client-side check).</div>
+            </div>
+
+            <!-- Emergency contact -->
+            <div class="full section">
+                <strong>Emergency contact</strong>
+            </div>
+
+            <div>
+                <label for="emergencyName">Name *</label>
+                <input id="emergencyName" name="emergencyName" type="text" required>
+            </div>
+            <div>
+                <label for="emergencyPhone">Phone *</label>
+                <input id="emergencyPhone" name="emergencyPhone" type="tel" required>
+            </div>
+
+            <!-- Additional info -->
+            <div class="full">
+                <label for="notes">Additional notes</label>
+                <textarea id="notes" name="notes"
+                    placeholder="Any allergies, accessibility needs, or other notes."></textarea>
+            </div>
+
+            <div class="full actions">
+                <button type="submit">Submit application</button>
+                <button type="button" class="secondary" id="resetBtn">Reset</button>
+                <div id="formMessage" class="note" aria-live="polite"></div>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        const form = document.getElementById('admissionForm');
+        const message = document.getElementById('formMessage');
+        const resetBtn = document.getElementById('resetBtn');
+        const documentsInput = document.getElementById('documents');
+
+        function bytesToMB(n) { return +(n / 1024 / 1024).toFixed(2) }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            message.textContent = '';
+
+            // native validity check
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // files check
+            const files = Array.from(documentsInput.files || []);
+            if (files.length > 5) { message.textContent = 'Please upload at most 5 files.'; message.className = 'error'; return; }
+            for (const f of files) { if (bytesToMB(f.size) > 5) { message.textContent = `File "${f.name}" is too large (${bytesToMB(f.size)}MB). Max 5MB each.`; message.className = 'error'; return; } }
+
+            // gather data for preview / sending
+            const data = new FormData(form);
+            const summary = {};
+            for (const [k, v] of data.entries()) {
+                if (k === 'documents') continue; // skip binary
+                summary[k] = v;
+            }
+
+            // Here: send with fetch to your server endpoint. Example (uncomment & set URL):
+            /*
+            fetch('/submit-admission', {
+              method: 'POST',
+              body: data
+            }).then(r=>r.json()).then(resp=>{ console.log(resp); })
+            */
+
+            message.className = '';
+            message.textContent = 'Application validated locally. (This demo does not submit anywhere.)';
+
+            // show a gentle summary in console
+            console.log('Form summary (no files):', summary);
+            alert('Form validated ✓ — check console for summary. Replace the fetch code with your server endpoint to submit.');
+        });
+
+        resetBtn.addEventListener('click', () => { form.reset(); message.textContent = 'Form cleared.'; message.className = 'note'; });
+    </script>
+</body>
+
+</html>

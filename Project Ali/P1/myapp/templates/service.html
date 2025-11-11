@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <header class="page-header_uni" role="banner" aria-label="Page header with image and title" style="
+        background: linear-gradient(135deg, rgba(11,61,46,0.9), rgba(15,168,87,0.9)), 
+                    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        color: white;
+        text-align: center;
+        padding: 80px 20px; /* 👈 Height reduced from 120px */
+        font-family: 'Poppins', sans-serif;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    ">
+        <h1 style="
+            font-size: 2.5rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: linear-gradient(to right, #b3ffcf, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        ">
+            Services
+        </h1>
+    
+        <!-- Breadcrumb -->
+        <div style="
+            font-size: 1rem;
+            color: #d4f9e2;
+            margin-bottom: 10px;
+        ">
+            <a href='{% url "home" %}' style="
+                color: #b3ffcf;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s;
+            " onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#b3ffcf'">
+                Home
+            </a>
+            &nbsp;>&nbsp;
+            <span style="color: #ffffff; font-weight: 600;">Service</span>
+        </div>
+    
+        <div style="
+            width: 100px;
+            height: 3px;
+            background-color: #00ff9d;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        "></div>
+    </header>
+
+    <section id="services" class="service-section">
+        <div class="container">
+            <h3>Our Services</h3>
+            <div class="service-row">
+                <div class="service-card">
+                    <img src="{% static 'img/admission.jpg' %}" alt="service">
+                    <div class="card-body">
+                        <h5>University Admissions</h5>
+                        <p>Guidance across top countries and institutions.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="{% static 'img/visa.jpg' %}" alt="service">
+                    <div class="card-body">
+                        <h5>Visa Assistance</h5>
+                        <p>End-to-end support for visa filing and interviews.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="{% static 'img/test1.png' %}" alt="service">
+                    <div class="card-body">
+                        <h5>Test Preparation</h5>
+                        <p>IELTS, PTE and English coaching by experts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Container and headings */
+        .service-section {
+            padding: 80px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+    
+        .service-section h3 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+            position: relative;
+        }
+    
+        .service-section h3::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: #4CAF50;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+    
+        /* Grid layout */
+        .service-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+    
+        /* Card styling */
+        .service-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+    
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Image styling */
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+    
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+    
+        /* Card body */
+        .card-body {
+            padding: 20px;
+        }
+    
+        .card-body h5 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .card-body p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+    
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .service-section h3 {
+                font-size: 28px;
+            }
+    
+            .card-body h5 {
+                font-size: 20px;
+            }
+    
+            .card-body p {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+
+
+{% endblock %}

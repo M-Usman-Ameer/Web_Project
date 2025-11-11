@@ -1,0 +1,36 @@
+{% load static %}
+<footer class="footer">
+    <div class="container footer-top">
+        <div class="footer-box">
+            <h2 class="footer-title">* We’re Ready For Your Business Solution</h2>
+            <p>Consulting services are valuable for businesses of all sizes. They provide small businesses with the
+                expertise and guidance needed.</p>
+        </div>
+        <div class="footer-box">
+            <h5>Contact</h5>
+            <p>📞 0315 2004301</p>
+            <p>📧 info@hnhconsultancy.pk</p>
+            <p>📍 Flat No.6, Allied Plaza, 2-C Sector F-10 Markaz Islamabad</p>
+        </div>
+        <div class="footer-box">
+            <h5>Quick Links</h5>
+            <p><a href="{% url 'home' %}">Home</a></p>
+            <p><a href="{% url 'about' %}">About Us</a></p>
+            <p><a href="{% url 'service' %}">Services</a></p>
+            <p><a href="{% url 'Contact' %}">Contact</a></p>
+        </div>
+        <div class="footer-box">
+            <h5>Follow Us</h5>
+            <p><a href="#">Facebook</a></p>
+            <p><a href="#">Instagram</a></p>
+            <p><a href="#">LinkedIn</a></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 H&H Educational Consultancy. All Rights Reserved.
+    </div>
+
+    <!-- Link main.js -->
+    <script src="{% static 'js/main.js' %}" defer></script>
+</footer>

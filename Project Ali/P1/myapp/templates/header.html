@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>H&H Educational Consultancy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Top Contact Bar -->
+<div class="top-bar container">
+    <div class="top-bar-item">📞 0315 2004301</div>
+    <div class="top-bar-item">📧 info@hnhconsultancy.pk</div>
+    <div class="top-bar-item">📍 Flat No.6, Allied Plaza,2-C Sector F-10 Markaz Islamabad</div>
+</div>
+
+<header class="container header">
+    <div class="logo">
+        <img src="{% static 'img/logo.png' %}" alt="H&H Logo" />
+        <span>H&H Educational Consultancy</span>
+    </div>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Universities ▾</a>
+                <ul class="submenu">
+                    <li><a href="{% url 'UK' %}"><b>Study in UK</b></a></li>
+                    <li><a href="{% url 'USA' %}"><b>Study in USA</b></a></li>
+                    <li><a href="{% url 'austrila' %}"><b>Study in Australia</b></a></li>
+                    <li><a href="{% url 'italy' %}"><b>Study in Canada</b></a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'service' %}">Services</a></li>
+            <li><a href="{% url 'Contact' %}">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="L">
+        {% if request.session.user_id %}
+        <span>Welcome, {{ request.session.username }}!</span>
+        <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+
+
+</header>

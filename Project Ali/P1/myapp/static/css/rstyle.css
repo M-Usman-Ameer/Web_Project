@@ -1,0 +1,175 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body background */
+body {
+    background: #f5f8f6;
+}
+
+/* Navbar Container */
+.navbar {
+    background-color: #278a1e;
+    /* blue background */
+    padding: 15px 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Flex container to position logo and links */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    /* logo left, links right */
+    align-items: center;
+}
+
+/* Logo */
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Navigation Links */
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Hover effect for links */
+.navbar .nav-links li a:hover {
+    background-color: #0bf148;
+    /* darker blue */
+}
+
+/* Form container */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    /* full height minus navbar */
+    padding: 40px 20px;
+}
+
+/* Form box */
+.auth-box {
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.auth-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Form heading */
+.auth-box h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #046c3c;
+}
+
+/* Input fields */
+.auth-box input {
+    width: 100%;
+    padding: 14px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.auth-box input:focus {
+    border-color: #00a86b;
+    box-shadow: 0 0 8px rgba(0, 168, 107, 0.3);
+    outline: none;
+}
+
+/* Button */
+.auth-box button {
+    width: 100%;
+    padding: 14px;
+    background: #00a86b;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-box button:hover {
+    background: #046c3c;
+    transform: scale(1.03);
+}
+
+/* Paragraph */
+.auth-box p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.auth-box p a {
+    color: #00a86b;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.auth-box p a:hover {
+    color: #046c3c;
+    text-decoration: underline;
+}
+
+/* Messages styling */
+.messages p {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.messages .error {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.messages .success {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        gap: 15px;
+    }
+
+    .auth-box {
+        padding: 40px 25px;
+    }
+}
